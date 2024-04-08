@@ -62,7 +62,6 @@ class _WeatherPageState extends State<WeatherPage> {
     if (coordinatesResponse.statusCode == 200) {
       final coordinatesData = json.decode(coordinatesResponse.body);
       if (coordinatesData.isEmpty) {
-        // Se não houver dados para a cidade, exiba uma mensagem ou solicite ao usuário que tente novamente
         showDialog(
           context: context,
           builder: (context) {
@@ -154,7 +153,7 @@ class _WeatherPageState extends State<WeatherPage> {
         final weather = _weatherData['list'][index];
         final temp = weather['main']['temp'];
         final date = DateTime.fromMillisecondsSinceEpoch(weather['dt'] * 1000);
-        final description = _capitalizeFirstLetter(weather['weather'][0]['description']); // Capitalize a descrição
+        final description = _capitalizeFirstLetter(weather['weather'][0]['description']);
 
         return Padding(
           padding: const EdgeInsets.all(8.0),
